@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTeacherControllersTable extends Migration
+class CreateLessonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,15 @@ class CreateTeacherControllersTable extends Migration
      */
     public function up()
     {
-        Schema::create('teachers', function (Blueprint $table) {
+        Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname');
+            $table->string('unit');
+            $table->string('comment');
+            $table->foreignId('teacher_id')->constrained();
+            $table->string('objective');
+            $table->string('homework');
+            $table->date('original_date');
+            $table->date('new_date');
             $table->string('status');
             $table->timestamps();
         });
@@ -28,6 +34,6 @@ class CreateTeacherControllersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teachers');
+        Schema::dropIfExists('lessons');
     }
 }
