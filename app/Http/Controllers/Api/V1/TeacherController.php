@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TeacherController extends Controller
 {
@@ -14,6 +15,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
+        
+        return Teacher::all();
         $teachers = Teacher::all();
 
         return response()->json($teachers);
@@ -26,6 +29,10 @@ class TeacherController extends Controller
      */
     public function create(Request $request)
     {
+        $teacher = new Teacher;
+        $teacher->create($request->all());
+        return $teacher;
+        
         return Teacher::create($request->all());
     }
 
@@ -37,7 +44,11 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return 'hola';
+        // $teacher = new Teacher;
+        // $teacher->create($request->all());
+        // return $teacher;
+        return Teacher::create($request->all());
     }
 
     /**

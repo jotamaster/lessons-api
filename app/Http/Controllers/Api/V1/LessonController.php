@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Plan;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
-use App\Http\Resources\V1\PlanResource;
 
-class PlanController extends Controller
+class LessonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class PlanController extends Controller
      */
     public function index()
     {
-        return Plan::all();
+        return Lesson::all();
     }
 
     /**
